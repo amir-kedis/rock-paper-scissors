@@ -27,3 +27,31 @@ function userSelection()
         return userSelection();
     }
 }
+
+/* takes the choice of computer and user as a char of ['r', 'p', 's'] 
+* returns the winner as a string of ["tie","computer","user","unknown"]
+*/
+function playRound(userSelection, computerSelection) {
+    let winner;
+
+    if (
+        userSelection == computerSelection
+    ) {
+        winner = "tie";
+    } else if (
+        (computerSelection == 'p' && userSelection == 'r') ||
+        (computerSelection == 's' && userSelection == 'p') ||
+        (computerSelection == 'r' && userSelection == 's')
+    ) {
+        winner = "computer";
+    } else if (
+        (userSelection == 'p' && computerSelection == 'r') ||
+        (userSelection == 's' && computerSelection == 'p') ||
+        (userSelection == 'r' && computerSelection == 's')
+    ) {
+        winner = "user";
+    } else {
+        winner = "unknown";
+    }
+    return winner;
+}
