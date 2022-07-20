@@ -55,3 +55,52 @@ function playRound(userSelection, computerSelection) {
     }
     return winner;
 }
+
+/* takes the number of rounds you want to play
+* then loops every time and plays a round 
+* keeps track of scores
+* prints who won each round and at the end
+* returns the final winner as a string
+*/
+function game(rounds) {
+    let computerScore = 0;
+    let userScore = 0;
+
+    for (let i = 0; i < rounds;i++) {
+        let userChoice = userSelection();
+        let computerChoice = getComputerChoice();
+        
+        let winner = playRound(userChoice, computerChoice)
+
+        if (winner == "user") {
+            userScore++;
+        } else if (winner == "computer") {
+            computerScore++;
+        }
+
+        console.log(`you chose ${userChoice} and computer chose ${computerChoice}`);
+
+        if (winner == "user") {
+            console.log("congrats you won this round against machines");
+        } else if (winner == "computer") {
+            console.log("oh no, computers won this round but not war");
+        } else {
+            console.log("it's a tie!");
+        }
+
+        console.log(`your score now is ${userScore}`);
+        console.log(`computer score now is ${computerScore}`);
+        console.log("***************************************");
+    }
+
+    if (userScore > computerScore) {
+        console.log("congrats you won this war against machines, but be worry machines will return");
+        return "user";
+    } else if (computerScore > userScore) {
+        console.log("it's the end machines have enslaved humanity! unless we make a rebellion?");
+        return "computer";
+    } else {
+        console.log("no one won, humans and computers learnt to live together.");
+        return "tie";
+    }
+}
