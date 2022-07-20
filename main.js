@@ -104,3 +104,6 @@ function game(rounds) {
         return "tie";
     }
 }
+
+// start the game with 5 rounds
+game(5);
