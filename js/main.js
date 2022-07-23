@@ -13,8 +13,7 @@ function getComputerChoice() {
 * if he enters a proper answer return its abbreviation
 * else it calls itself again and asks user again
 */
-function userSelection() 
-{
+function userSelection() {
     let input = prompt("enter your choice? humanity depends on you");
 
     if (input.toUpperCase() == "ROCK") {
@@ -66,11 +65,11 @@ function game(rounds) {
     let computerScore = 0;
     let userScore = 0;
 
-    for (let i = 0; i < rounds;i++) {
+    for (let i = 0; i < rounds; i++) {
         let userChoice = userSelection();
         let computerChoice = getComputerChoice();
-        
-        let winner = playRound(userChoice, computerChoice)
+
+        let winner = playRound(userChoice, computerChoice);
 
         if (winner == "user") {
             userScore++;
@@ -104,3 +103,44 @@ function game(rounds) {
         return "tie";
     }
 }
+
+function startIntro() {
+    const paras = document.querySelectorAll(".intro p");
+    paras[0].classList.add("fadein");
+
+
+    setTimeout(() => {
+        paras[0].classList.add("fadeout");
+        paras[0].addEventListener("transitionend", () => {
+            paras[0].classList.add("hidden");
+            paras[1].classList.remove("hidden");
+        })
+    }, 2000)
+
+    setTimeout(() => {
+        paras[1].classList.add("fadein");
+
+        paras[1].addEventListener("transitionend", () => {
+            paras[1].classList.add("fadeout");
+            paras[1].addEventListener("transitionend", () => {
+                paras[1].classList.add("hidden");
+                paras[2].classList.remove("hidden");
+            });
+        });
+    }, 4000);
+
+    setTimeout(() => {
+        paras[2].classList.add("fadein");
+
+        paras[2].addEventListener("transitionend", () => {
+            paras[2].classList.add("fadeout");
+            paras[2].addEventListener("transitionend", () => {
+                paras[2].classList.add("hidden");
+                document.querySelector(".intro").classList.add("hidden");
+            });
+        });
+    }, 8000);
+}
+
+// intro code
+window.addEventListener("DOMContentLoaded", startIntro)

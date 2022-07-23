@@ -3,6 +3,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    transition: opacity 1s ease-in-out;
 }
 
 body {
@@ -13,6 +14,17 @@ body {
     color: #FFF;
     text-align: center;
 
+}
+
+.hidden {
+    display: none;
+}
+
+.fadein {
+    opacity: 1 !important;
+}
+.fadeout {
+    opacity: 0 !important;
 }
 
 /* intro story */
@@ -40,4 +52,16 @@ body {
 .footer a {
     text-decoration: none;
     color: #4CC9F0;
+}
+
+.intro {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.intro p {
+    font-size: 48px;
+    font-weight: bold;
+    opacity: 0;
 }
