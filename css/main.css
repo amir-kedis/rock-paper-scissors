@@ -1,8 +1,43 @@
 /* globals */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #577399;
+    color: #FFF;
+    text-align: center;
+
+}
+
+/* intro story */
+.game {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    height: 8vh;
+    background-color: #475F80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #4CC9F0;
 }
