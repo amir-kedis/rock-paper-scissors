@@ -104,11 +104,17 @@ function game(rounds) {
     }
 }
 
+/* makes the intro story at the beginning 
+ * shows every paragraph in order one by one
+ * returns nothing  */
 function startIntro() {
     const paras = document.querySelectorAll(".intro p");
+
+    // fade first p
     paras[0].classList.add("fadein");
 
 
+    // fade out the first p and unhide the second p
     setTimeout(() => {
         paras[0].classList.add("fadeout");
         paras[0].addEventListener("transitionend", () => {
@@ -117,6 +123,7 @@ function startIntro() {
         })
     }, 2000)
 
+    // fade out the second p and unhide the last p
     setTimeout(() => {
         paras[1].classList.add("fadein");
 
@@ -129,6 +136,7 @@ function startIntro() {
         });
     }, 4000);
 
+    // fade in and out the last p and hide the whole intro section
     setTimeout(() => {
         paras[2].classList.add("fadein");
 
