@@ -85,18 +85,56 @@ body {
     justify-content: space-around;
     align-items: center;
     margin:0 auto;
-    width: 90vw;
+    width: 60vw;
 }
 
 .choice {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vw;
-    width: 15vw;
+    height: 10vw;
+    width: 10vw;
     background-color: #475F80;
     border: 3px solid #4CC9F0;
     border-radius: 16px;
-    font-size: 108px;
+    font-size: 90px;
     cursor: pointer;
+}
+
+/* result */
+.result {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.result .row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+    width: 90vw;
+}
+.row__choice .choice {
+    cursor: default;
+}
+.result-msg {
+    font-size: 32px;
+    font-weight: bold;
+}
+.result-msg--win {
+    color: #72F935;
+}
+.result-msg--tie {
+    color: #51EAFF;
+}
+.result-msg--lose {
+    color: #FFBA08;
+}
+.scores {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.scores span {
+    color: #4CC9F0;
 }

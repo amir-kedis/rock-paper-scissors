@@ -26,14 +26,29 @@
         <div class="choice_panel">
           <h2>Choose Your Weapon carefully</h2>
           <div class="choice_panel__choices">
-            <div data-choice="r" class="choice">
-              ✊
+            <div data-choice="r" class="choice">✊</div>
+            <div data-choice="p" class="choice">✋</div>
+            <div data-choice="s" class="choice">✌</div>
+          </div>
+          <div class="result hidden">
+            <div class="row">
+              <div class="row__choice">
+                <h3>You choose</h3>
+                <div id="userChoiceDiv" class="choice">✊</div>
+              </div>
+              <div class="row__choice">
+                <h3>computer choose</h3>
+                <div id="computerChoiceDiv" class="choice">✊</div>
+              </div>
             </div>
-            <div data-choice="p" class="choice">
-              ✋
+            <div class="result-msg">
+              congrats you won this round against machines
             </div>
-            <div data-choice="s" class="choice">
-              ✌
+            <div class="scores">
+              Your Score is
+              <span id="userscore"> 0 </span>
+              -- computer score is
+              <span id="computerscore"> 0 </span>
             </div>
           </div>
         </div>
