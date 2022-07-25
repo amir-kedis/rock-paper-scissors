@@ -60,9 +60,16 @@ function game() {
                 userScore++;
             } else if (winner == "computer") {
                 computerScore++;
+                
             }
-            // show the winner
-            showWinner(winner, computerSelection, userSelection, userScore, computerScore);
+
+            if (userScore >= 5 || computerScore >= 5) {
+                delcareFinalWinner(winner);
+                return 0;
+            } else {
+                // show the winner
+                showWinner(winner, computerSelection, userSelection, userScore, computerScore);
+            }
 
         });
     }
@@ -128,6 +135,10 @@ function showWinner(winner, computerSelection, userSelection, userScore, compute
 
 }
 
+function delcareFinalWinner(winner) {
+    console.log(winner);
+}
+
 
 /* makes the intro story at the beginning 
  * shows every paragraph in order one by one
@@ -176,6 +187,6 @@ function startIntro() {
 }
 
 // intro code
-window.addEventListener("DOMContentLoaded", startIntro)
+// window.addEventListener("DOMContentLoaded", startIntro)
 
 game();
