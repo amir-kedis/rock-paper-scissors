@@ -17,7 +17,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .fadein {
@@ -64,4 +64,39 @@ body {
     font-size: 48px;
     font-weight: bold;
     opacity: 0;
+}
+
+/* Choice Panel */
+.choice_panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-self: center;
+}
+
+.choice_panel h2 {
+    font-size: 48px;
+}
+
+.choice_panel__choices {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:0 auto;
+    width: 90vw;
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vw;
+    width: 15vw;
+    background-color: #475F80;
+    border: 3px solid #4CC9F0;
+    border-radius: 16px;
+    font-size: 108px;
+    cursor: pointer;
 }
