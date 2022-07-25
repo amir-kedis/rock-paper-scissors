@@ -14,16 +14,13 @@ function getComputerChoice() {
 * else it calls itself again and asks user again
 */
 function userSelection() {
-    let input = prompt("enter your choice? humanity depends on you");
+    const choices = document.querySelectorAll(".choice_panel__choices .choice");
 
-    if (input.toUpperCase() == "ROCK") {
-        return 'r';
-    } else if (input.toUpperCase() == "PAPER") {
-        return 'p';
-    } else if (input.toUpperCase() == "SCISSORS") {
-        return 's';
-    } else {
-        return userSelection();
+    for (const choice of choices) {
+        choice.addEventListener('click', () => {
+            console.log(choice.attributes['data-choice'].value);
+            return choice.attributes['data-choice'].value;
+        });
     }
 }
 
@@ -152,3 +149,5 @@ function startIntro() {
 
 // intro code
 window.addEventListener("DOMContentLoaded", startIntro)
+
+userSelection();
