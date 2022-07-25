@@ -7,22 +7,6 @@ function getComputerChoice() {
     return choices[randomNum];
 }
 
-/* takes no input
-* returns user choice ['r', 'p', 's'] 
-* asks user for his input 
-* if he enters a proper answer return its abbreviation
-* else it calls itself again and asks user again
-*/
-function userSelection() {
-    const choices = document.querySelectorAll(".choice_panel__choices .choice");
-
-    for (const choice of choices) {
-        choice.addEventListener('click', () => {
-            console.log(choice.attributes['data-choice'].value);
-            return choice.attributes['data-choice'].value;
-        });
-    }
-}
 
 /* takes the choice of computer and user as a char of ['r', 'p', 's'] 
 * returns the winner as a string of ["tie","computer","user","unknown"]
@@ -58,47 +42,76 @@ function playRound(userSelection, computerSelection) {
 * prints who won each round and at the end
 * returns the final winner as a string
 */
-function game(rounds) {
-    let computerScore = 0;
+// function game(rounds) {
+//     let computerScore = 0;
+//     let userScore = 0;
+
+//     for (let i = 0; i < rounds; i++) {
+//         let userChoice = userSelection();
+//         let computerChoice = getComputerChoice();
+
+//         let winner = playRound(userChoice, computerChoice);
+
+//         if (winner == "user") {
+//             userScore++;
+//         } else if (winner == "computer") {
+//             computerScore++;
+//         }
+
+//         console.log(`you chose ${userChoice} and computer chose ${computerChoice}`);
+
+//         if (winner == "user") {
+//             console.log("congrats you won this round against machines");
+//         } else if (winner == "computer") {
+//             console.log("oh no, computers won this round but not war");
+//         } else {
+//             console.log("it's a tie!");
+//         }
+
+//         console.log(`your score now is ${userScore}`);
+//         console.log(`computer score now is ${computerScore}`);
+//         console.log("***************************************");
+//     }
+
+//     if (userScore > computerScore) {
+//         console.log("congrats you won this war against machines, but be worry machines will return");
+//         return "user";
+//     } else if (computerScore > userScore) {
+//         console.log("it's the end machines have enslaved humanity! unless we make a rebellion?");
+//         return "computer";
+//     } else {
+//         console.log("no one won, humans and computers learnt to live together.");
+//         return "tie";
+//     }
+// }
+
+
+
+function game() {
+    const choices = document.querySelectorAll(".choice_panel__choices .choice");
+
+    // keeps track of user and computer score
     let userScore = 0;
+    let computerScore  = 0;
+    let userSelection;
+    let computerSelection = getComputerChoice();
 
-    for (let i = 0; i < rounds; i++) {
-        let userChoice = userSelection();
-        let computerChoice = getComputerChoice();
+    // when user clicks a btn 
+    for (const choice of choices) {
+        choice.addEventListener('click', () => {
+            userSelection = choice.attributes['data-choice'].value;
 
-        let winner = playRound(userChoice, computerChoice);
-
-        if (winner == "user") {
-            userScore++;
-        } else if (winner == "computer") {
-            computerScore++;
-        }
-
-        console.log(`you chose ${userChoice} and computer chose ${computerChoice}`);
-
-        if (winner == "user") {
-            console.log("congrats you won this round against machines");
-        } else if (winner == "computer") {
-            console.log("oh no, computers won this round but not war");
-        } else {
-            console.log("it's a tie!");
-        }
-
-        console.log(`your score now is ${userScore}`);
-        console.log(`computer score now is ${computerScore}`);
-        console.log("***************************************");
+            // play a round 
+            console.log(playRound(userSelection, computerSelection));
+        });
     }
 
-    if (userScore > computerScore) {
-        console.log("congrats you won this war against machines, but be worry machines will return");
-        return "user";
-    } else if (computerScore > userScore) {
-        console.log("it's the end machines have enslaved humanity! unless we make a rebellion?");
-        return "computer";
-    } else {
-        console.log("no one won, humans and computers learnt to live together.");
-        return "tie";
-    }
+
+    // show the winner
+    // increment winner score
+    // if computer or user got 5 points
+        // end the game
+    // otherwise show the current score
 }
 
 /* makes the intro story at the beginning 
@@ -150,4 +163,4 @@ function startIntro() {
 // intro code
 window.addEventListener("DOMContentLoaded", startIntro)
 
-userSelection();
+game();
