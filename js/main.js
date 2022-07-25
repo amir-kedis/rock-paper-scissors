@@ -60,24 +60,31 @@ function game() {
                 userScore++;
             } else if (winner == "computer") {
                 computerScore++;
-                
+
             }
 
+            // if computer or user got 5 points
             if (userScore >= 5 || computerScore >= 5) {
-                delcareFinalWinner(winner);
-                return 0;
+
+                userScore = 0;
+                computerScore = 0;
+                document.querySelector("#userscore").textContent = 0;
+                document.querySelector("#computerscore").textContent = 0;
+                // end the game
+                declareFinalWinner(winner);
+                return;
+
             } else {
+                // otherwise show the current score
                 // show the winner
                 showWinner(winner, computerSelection, userSelection, userScore, computerScore);
             }
 
         });
     }
+    return;
 
 
-    // if computer or user got 5 points
-    // end the game
-    // otherwise show the current score
 }
 
 /**
@@ -119,7 +126,7 @@ function showWinner(winner, computerSelection, userSelection, userScore, compute
         resultMsg.classList.add("result-msg--win");
         resultMsg.classList.remove("result-msg--tie");
         resultMsg.classList.remove("result-msg--lose");
-    } else if (winner == "computer") {  
+    } else if (winner == "computer") {
         resultMsg.textContent = "oh no, computers won this round but not war";
         resultMsg.classList.add("result-msg--lose");
         resultMsg.classList.remove("result-msg--tie");
@@ -135,8 +142,38 @@ function showWinner(winner, computerSelection, userSelection, userScore, compute
 
 }
 
-function delcareFinalWinner(winner) {
-    console.log(winner);
+/**
+ * declares the final winner in the ending section
+ * @param {string} winner 
+ */
+function declareFinalWinner(winner) {
+    const choicePanelDiv = document.querySelector(".choice_panel");
+    const endingDiv = document.querySelector(".ending");
+    const endingMsg = document.querySelector(".ending h2");
+    const resetBtn = document.querySelector("#reset");
+
+    choicePanelDiv.classList.add("hidden");
+    endingDiv.classList.remove("hidden");
+
+    if (winner == "user") {
+        endingMsg.textContent = "Congrats you won this war against machines, but be worry machines will return";
+        endingMsg.classList.add("result-msg--win");
+        endingMsg.classList.remove("result-msg--lose");
+        resetBtn.textContent = "start again ";
+    } else {
+        endingMsg.textContent = "it's the end machines have enslaved humanity! unless we make a rebellion?";
+        endingMsg.classList.add("result-msg--lose");
+        endingMsg.classList.remove("result-msg--win");
+        resetBtn.textContent = "rebellion ";
+    }
+
+    resetBtn.addEventListener("click", () => {
+        choicePanelDiv.classList.remove("hidden");
+        endingDiv.classList.add("hidden");
+    },
+        {
+            once: true
+        });
 }
 
 
@@ -187,6 +224,6 @@ function startIntro() {
 }
 
 // intro code
-// window.addEventListener("DOMContentLoaded", startIntro)
+window.addEventListener("DOMContentLoaded", startIntro)
 
 game();
